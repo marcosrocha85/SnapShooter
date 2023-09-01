@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DD5DB8E2-6E29-43C8-ABCB-E3AC4FD2FBAC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SnapShooter.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ESP\SnapShooter_ESP.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ENU\SnapShooter_ENU.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PTB\SnapShooter_PTB.bdsproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SnapShooter">
+        <MSBuild Projects="SnapShooter.dproj"/>
+    </Target>
+    <Target Name="SnapShooter:Clean">
+        <MSBuild Projects="SnapShooter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SnapShooter:Make">
+        <MSBuild Projects="SnapShooter.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SnapShooter_ESP">
+        <MSBuild Projects="ESP\SnapShooter_ESP.bdsproj"/>
+    </Target>
+    <Target Name="SnapShooter_ESP:Clean">
+        <MSBuild Projects="ESP\SnapShooter_ESP.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SnapShooter_ESP:Make">
+        <MSBuild Projects="ESP\SnapShooter_ESP.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="SnapShooter_ENU">
+        <MSBuild Projects="ENU\SnapShooter_ENU.bdsproj"/>
+    </Target>
+    <Target Name="SnapShooter_ENU:Clean">
+        <MSBuild Projects="ENU\SnapShooter_ENU.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SnapShooter_ENU:Make">
+        <MSBuild Projects="ENU\SnapShooter_ENU.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="SnapShooter_PTB">
+        <MSBuild Projects="PTB\SnapShooter_PTB.bdsproj"/>
+    </Target>
+    <Target Name="SnapShooter_PTB:Clean">
+        <MSBuild Projects="PTB\SnapShooter_PTB.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SnapShooter_PTB:Make">
+        <MSBuild Projects="PTB\SnapShooter_PTB.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SnapShooter;SnapShooter_ESP;SnapShooter_ENU;SnapShooter_PTB"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SnapShooter:Clean;SnapShooter_ESP:Clean;SnapShooter_ENU:Clean;SnapShooter_PTB:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SnapShooter:Make;SnapShooter_ESP:Make;SnapShooter_ENU:Make;SnapShooter_PTB:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
